@@ -99,9 +99,6 @@
                 </configuration>
               </execution>
             </executions>
-            <configuration>
-              <uberJar>true</uberJar>
-            </configuration>
           </plugin>
           <plugin>
             <artifactId>maven-failsafe-plugin</artifactId>
