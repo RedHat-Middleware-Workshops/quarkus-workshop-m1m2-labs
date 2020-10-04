@@ -19,7 +19,7 @@ import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import org.acme.service.OwnersService;
 import org.acme.model.VisitForm;
-import org.acme.model.Visits;
+import org.acme.model.Visit;
 import org.acme.service.PetsService;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
@@ -50,8 +50,8 @@ public class VisitsResource {
     @Path("addVisit")
     public Response addPet(@MultipartForm VisitForm visitForm, @QueryParam("ownerId") Long ownerId, @QueryParam("petId") Long petId) {
 
-        Visits newVisit = visitForm.addVisit();
-        newVisit.setPets(petService.findById(petId));
+        Visit newVisit = visitForm.addVisit();
+        newVisit.setPet(petService.findById(petId));
         newVisit.persist();
         return Response.status(301)
                     .location(URI.create("/owners?id=" + ownerId))

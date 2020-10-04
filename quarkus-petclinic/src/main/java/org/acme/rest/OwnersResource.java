@@ -16,9 +16,9 @@ import javax.ws.rs.core.Response;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 
+import org.acme.model.Owner;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
-import org.acme.model.Owners;
 import org.acme.model.OwnerForm;
 import org.acme.service.OwnersService;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
@@ -59,7 +59,7 @@ public class OwnersResource {
     @Path("addOwner")
     public Response addOwner(@MultipartForm OwnerForm ownerForm) {
 
-        Owners newOwner = ownerForm.addOwner();
+        Owner newOwner = ownerForm.addOwner();
         newOwner.persist();
         return Response.status(301)
                     .location(URI.create("/owners?id=" + newOwner.getId()))
@@ -81,7 +81,7 @@ public class OwnersResource {
     @Path("editOwner")
     public Response editOwner(@MultipartForm OwnerForm ownerForm, @QueryParam("ownerId") Long ownerId) {
 
-        Owners existingOwner = service.findById(ownerId);
+        Owner existingOwner = service.findById(ownerId);
         existingOwner = ownerForm.editOwner(existingOwner);
         return Response.status(301)
                     .location(URI.create("/owners?id=" + ownerId))

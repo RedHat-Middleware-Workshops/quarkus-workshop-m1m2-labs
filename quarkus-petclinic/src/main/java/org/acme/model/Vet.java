@@ -2,19 +2,15 @@ package org.acme.model;
 
 import java.util.List;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
+@Table(name="vets")
 @Cacheable
-public class Vets extends PanacheEntity {
+public class Vet extends PanacheEntity {
 
 	@Column(name = "first_name")
 	@NotEmpty
@@ -29,6 +25,6 @@ public class Vets extends PanacheEntity {
 		name = "vet_Specialties",
 		joinColumns = @JoinColumn(name = "vet_id"), 
   		inverseJoinColumns = @JoinColumn(name = "specialty_id"))
-    public List<Specialties> specialties;
+    public List<Specialty> specialties;
 	
 }

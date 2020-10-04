@@ -3,23 +3,14 @@ package org.acme.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
+@Table(name="pets")
 @Cacheable
-public class Pets extends PanacheEntityBase {
+public class Pet extends PanacheEntityBase {
   
 	@Id
     @SequenceGenerator(
@@ -49,18 +40,18 @@ public class Pets extends PanacheEntityBase {
 
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
-	public Owners owners;
+	public Owner owner;
 
-	public Owners getOwners() {
-		return this.owners;
+	public Owner getOwner() {
+		return this.owner;
 	}
 
-	public void setOwners(Owners owners) {
-		this.owners = owners;
+	public void setOwner(Owner owner) {
+		this.owner = owner;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pets")
-	public List<Visits> visits;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+	public List<Visit> visits;
 	
 	public Long getId(){
         return id;

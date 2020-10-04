@@ -10,8 +10,8 @@ public class OwnerForm {
     public @FormParam("city") String city;
     public @FormParam("telephone") String telephone;
 
-    public Owners addOwner() {
-        Owners newOwner = new Owners();
+    public Owner addOwner() {
+        Owner newOwner = new Owner();
         newOwner.firstName = firstName;
         newOwner.lastName = lastName;
         newOwner.address = address;
@@ -20,7 +20,7 @@ public class OwnerForm {
         return newOwner;
     }
 
-    public Owners editOwner(Owners existingOwner) {
+    public Owner editOwner(Owner existingOwner) {
         existingOwner.firstName = firstName;
         existingOwner.lastName = lastName;
         existingOwner.address = address;
