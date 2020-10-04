@@ -2,7 +2,13 @@ package org.acme.model;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Cacheable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
@@ -23,7 +29,7 @@ public class Vet extends PanacheEntity {
 	@ManyToMany
 	@JoinTable(
 		name = "vet_Specialties",
-		joinColumns = @JoinColumn(name = "vet_id"), 
+		joinColumns = @JoinColumn(name = "vet_id"),
   		inverseJoinColumns = @JoinColumn(name = "specialty_id"))
     public List<Specialty> specialties;
 	
