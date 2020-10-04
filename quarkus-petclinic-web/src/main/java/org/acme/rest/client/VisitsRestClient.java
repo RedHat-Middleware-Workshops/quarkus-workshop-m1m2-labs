@@ -12,17 +12,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.acme.model.Vets;
 import org.acme.model.Visits;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 @Path("/")
 @RegisterRestClient
 public interface VisitsRestClient {
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Vets> getAll();
 
     @GET
     @Path("pets/visits")
