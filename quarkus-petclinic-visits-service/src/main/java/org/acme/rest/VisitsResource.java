@@ -14,14 +14,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.acme.model.Visits;
 import org.acme.service.VisitsService;
+import org.jboss.logging.Logger;
 
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class VisitsResource {
+
+    private static final Logger LOG = Logger.getLogger(VisitsService.class);
 
     @Inject
     VisitsService visitsService;
@@ -45,6 +47,8 @@ public class VisitsResource {
     @Path("owners/*/pets/{petId}/visits")
     public Response create(@PathParam("petId") long petId, Visits theVisits,  @Context UriInfo uriInfo) {
         theVisits.petId = petId;
+
+        LOG.info("Persisting: " + theVisits);
         visitsService.save(theVisits);
 
         UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
