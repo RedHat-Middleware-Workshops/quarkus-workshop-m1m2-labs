@@ -8,7 +8,7 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 
 You can run your application in dev mode that enables live coding using:
 ```
-./mvnw quarkus:dev
+./mvnw quarkus:dev -Ddebug=8005
 ```
 
 ## Packaging and running the application
