@@ -1,0 +1,68 @@
+<h2>Owner Information</h2>
+
+<table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <td><b>{owners.get(0).firstName} {owners.get(0).lastName}</b></td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{owners.get(0).address}</td>
+    </tr>
+    <tr>
+      <th>City</th>
+      <td>{owners.get(0).city}</td>
+    </tr>
+    <tr>
+      <th>Telephone</th>
+      <td>{owners.get(0).telephone}</td>
+    </tr>
+</table>
+
+<a href="getOwner?ownerId={owners.get(0).id}" class="btn btn-default">Edit Owner</a>
+<a href="getPet?ownerId={owners.get(0).id}" class="btn btn-default">Add New Pet</a>
+
+<br />
+<br />
+<br />
+
+<h2>Pets and Visits</h2>
+
+<table class="table table-striped">
+    {#for pet in owners.get(0).pets} 
+      <tr>
+        <td valign="top">
+          <dl class="dl-horizontal">
+            <dt>Name</dt>
+            <dd>{pet.name}</dd>
+            <dt>Birth Date</dt>
+            <dd>{pet.birthDate}</dd>
+            <dt>Type</dt>
+            <dd>{pet.type.name}</dd>
+          </dl>
+        </td>
+        <td valign="top">
+          <table class="table-condensed">
+            <thead>
+              <tr>
+                <th>Visit Date</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            {#if pet.visits != null}
+              {#for visit in pet.visits} 
+                <tr>
+                  <td>{visit.date}</td>
+                  <td>{visit.description}</td>
+                </tr>
+              {/for}
+            {/if}
+            <tr>
+              <td><a href="/getPet?ownerId={owners.get(0).id}&petId={pet.id}">Edit Pet</a></td>
+              <td><a href="/getVisit?ownerId={owners.get(0).id}&petId={pet.id}">Add Visit</a></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    {/for}
+</table>

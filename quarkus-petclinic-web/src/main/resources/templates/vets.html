@@ -1,0 +1,31 @@
+{#include header/}
+
+<h2>Veterinarians</h2>
+
+<table id="vets" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Specialties</th>
+    </tr>
+    </thead>
+    <tbody>
+        {#for vet in vets} 
+            <tr>
+                <td>{vet.firstName} {vet.lastName}</td>      
+                {#if vet.specialties.isEmpty}
+                    <td><span>none</span></td>
+                {#else}
+                    <td>
+                    {#for specialty in vet.specialties}
+                        {specialty.name} 
+                    {/for}
+                    </td>
+                {/if}
+            </tr>
+        {/for} 
+    </tbody>
+</table>
+</div></div>
+
+{#include footer/}
