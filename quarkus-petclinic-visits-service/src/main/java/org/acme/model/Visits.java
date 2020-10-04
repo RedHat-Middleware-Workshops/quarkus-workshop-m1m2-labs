@@ -6,14 +6,27 @@ import java.util.List;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotEmpty;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-// @Cacheable
-public class Visits extends PanacheEntity {
+@Cacheable
+public class Visits extends PanacheEntityBase {
   
+	@Id
+    @SequenceGenerator(
+            name = "visitsSequence",
+            sequenceName = "visits_id_seq",
+            allocationSize = 1,
+            initialValue = 1000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visitsSequence")
+	public Long id;
+	
 	@Column(name = "pet_id")
 	public long petId;
 

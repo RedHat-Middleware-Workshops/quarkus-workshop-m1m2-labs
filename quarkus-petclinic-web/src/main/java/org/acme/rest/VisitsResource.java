@@ -20,11 +20,17 @@ import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import org.acme.service.OwnersService;
 import org.acme.model.VisitForm;
 import org.acme.model.Visits;
+import org.acme.rest.client.VisitsRestClient;
 import org.acme.service.PetsService;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
 @Path("/")
 public class VisitsResource {
+
+    @Inject
+    @RestClient
+    VisitsRestClient visitsRestClient;
 
     @Inject
     OwnersService ownerService;

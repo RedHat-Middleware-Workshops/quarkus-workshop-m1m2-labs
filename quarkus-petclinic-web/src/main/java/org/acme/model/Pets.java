@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
@@ -59,7 +60,7 @@ public class Pets extends PanacheEntityBase {
 		this.owners = owners;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pets")
+	@Transient
 	public List<Visits> visits;
 	
 	public Long getId(){
