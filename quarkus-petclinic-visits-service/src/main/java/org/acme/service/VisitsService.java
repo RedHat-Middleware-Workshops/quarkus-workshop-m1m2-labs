@@ -9,12 +9,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.acme.model.Visits;
+import org.jboss.logging.Logger;
 
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class VisitsService {
    
+    private static final Logger LOG = Logger.getLogger(VetsResource.class);
+
     public List<Visits> findByPetId(Long id) {
         return Visits.findByPetId(id.longValue());
     }
@@ -30,7 +33,7 @@ public class VisitsService {
     @Transactional
 	public void save(Visits theVisits) {
 
-        System.out.println("Persisting: " + theVisits);
+        LOG.info("Persisting: " + theVisits);
 
         theVisits.persist();
 	}
