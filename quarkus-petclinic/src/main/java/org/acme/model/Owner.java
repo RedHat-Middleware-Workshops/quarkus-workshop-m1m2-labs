@@ -16,9 +16,9 @@ import javax.validation.constraints.NotEmpty;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-@Entity
+@Entity(name="owners")
 @Cacheable
-public class Owners extends PanacheEntityBase {
+public class Owner extends PanacheEntityBase {
 
     @Id
     @SequenceGenerator(
@@ -44,8 +44,8 @@ public class Owners extends PanacheEntityBase {
 	@Digits(fraction = 0, integer = 10)
     public String telephone;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owners")
-    public List<Pets> pets;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    public List<Pet> pets;
     
     public Long getId(){
         return id;

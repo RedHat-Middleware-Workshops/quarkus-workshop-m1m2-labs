@@ -8,13 +8,13 @@ import javax.persistence.ManyToMany;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Entity
+@Entity(name="specialties")
 @Cacheable
-public class Specialties extends PanacheEntity {
+public class Specialty extends PanacheEntity {
   
     public String name;
 
     @ManyToMany(mappedBy = "specialties")
-    public List<Vets> vets;
+    public List<Vet> vets;
 
 }

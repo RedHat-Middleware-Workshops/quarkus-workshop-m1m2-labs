@@ -8,8 +8,8 @@ public class VisitForm {
     public @FormParam("date") LocalDate date;
     public @FormParam("description") String description;
 
-    public Visits addVisit() {
-        Visits newVisit = new Visits();
+    public Visit addVisit() {
+        Visit newVisit = new Visit();
         newVisit.date = date;
         newVisit.description = description;
         return newVisit;
