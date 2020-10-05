@@ -8,13 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Entity
-@Table(name="vets")
+@Entity(name="vets")
 @Cacheable
 public class Vet extends PanacheEntity {
 

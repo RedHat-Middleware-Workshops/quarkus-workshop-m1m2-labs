@@ -7,8 +7,7 @@ import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Entity
-@Table(name="vet_specialties")
+@Entity(name="vet_specialties")
 @Cacheable
 public class VetSpecialty extends PanacheEntity {
 

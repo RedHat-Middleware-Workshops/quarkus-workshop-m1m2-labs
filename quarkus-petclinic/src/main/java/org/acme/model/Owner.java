@@ -11,14 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-@Entity
-@Table(name="owners")
+@Entity(name="owners")
 @Cacheable
 public class Owner extends PanacheEntityBase {
 

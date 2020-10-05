@@ -16,10 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="pets")
+@Entity(name="pets")
 @Cacheable
 public class Pet extends PanacheEntityBase {
   
