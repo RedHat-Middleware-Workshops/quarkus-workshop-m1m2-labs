@@ -10,7 +10,7 @@ import org.acme.model.Pet;
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class PetsService {
+public class VisitsService {
    
     public Pet findById(Long id) {
         return Pet.findById(id.longValue());

@@ -13,9 +13,11 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 @Cacheable
-public class Visits extends PanacheEntity {
+public class Visit extends PanacheEntity {
   
-	public long petId;
+	@ManyToOne
+	@JoinColumn(name = "pet_id")
+	public Pet pet;
 
     @Column(name = "visit_date")
 	public LocalDate date;
@@ -23,5 +25,12 @@ public class Visits extends PanacheEntity {
 	@NotEmpty
 	public String description;
 
+	public Pet getPet() {
+		return this.pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
 	
 }

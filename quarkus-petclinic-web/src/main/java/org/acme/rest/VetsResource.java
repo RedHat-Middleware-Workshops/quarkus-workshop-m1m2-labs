@@ -11,10 +11,9 @@ import javax.ws.rs.core.MediaType;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 
-import org.acme.model.Vets;
+import org.acme.model.Vet;
 import org.acme.rest.client.VetsRestClient;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-import org.jboss.logging.Logger;
 
 @Path("vets")
 public class VetsResource {
@@ -23,8 +22,6 @@ public class VetsResource {
     @RestClient
     VetsRestClient vetsRestClient;
 
-    private static final Logger LOG = Logger.getLogger(VetsResource.class);
-
     @Inject
     Template vets;
 
@@ -32,9 +29,9 @@ public class VetsResource {
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance get() {
 
-        LOG.info("Calling vetsRestClient");
-        List<Vets> data = vetsRestClient.getAll();
-        LOG.info("Received data from vetsRestClient: " + data);
+        System.out.println("Calling vetsRestClient");
+        List<Vet> data = vetsRestClient.getAll();
+        System.out.println("Received data from vetsRestClient: " + data);
 
         return vets.data("active", "vets")
                 .data("vets", data);

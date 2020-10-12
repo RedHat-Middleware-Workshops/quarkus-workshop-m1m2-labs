@@ -18,7 +18,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 @Cacheable
-public class Owners extends PanacheEntityBase {
+public class Owner extends PanacheEntityBase {
 
     @Id
     @SequenceGenerator(
@@ -45,7 +45,7 @@ public class Owners extends PanacheEntityBase {
     public String telephone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owners")
-    public List<Pets> pets;
+    public List<Pet> pets;
     
     public Long getId(){
         return id;

@@ -9,14 +9,14 @@ public class PetForm {
     public @FormParam("birthDate") LocalDate birthDate;
     public @FormParam("type") String type;
 
-    public Pets addPet() {
-        Pets newPet = new Pets();
+    public Pet addPet() {
+        Pet newPet = new Pet();
         newPet.name = name;
         newPet.birthDate = birthDate;
         return newPet;
     }
 
-    public Pets editPet(Pets existingPet) {
+    public Pet editPet(Pet existingPet) {
         existingPet.name = name;
         existingPet.birthDate = birthDate;
         return existingPet;

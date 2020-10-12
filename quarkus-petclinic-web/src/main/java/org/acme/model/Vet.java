@@ -14,7 +14,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 @Cacheable
-public class Vets extends PanacheEntity {
+public class Vet extends PanacheEntity {
 
 	@Column(name = "first_name")
 	@NotEmpty
@@ -29,6 +29,6 @@ public class Vets extends PanacheEntity {
 		name = "vet_Specialties",
 		joinColumns = @JoinColumn(name = "vet_id"), 
   		inverseJoinColumns = @JoinColumn(name = "specialty_id"))
-    public List<Specialties> specialties;
+    public List<Specialty> specialties;
 	
 }

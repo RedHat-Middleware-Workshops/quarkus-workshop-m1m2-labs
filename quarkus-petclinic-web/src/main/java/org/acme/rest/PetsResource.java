@@ -15,10 +15,10 @@ import javax.ws.rs.Produces;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 
+import org.acme.model.Pet;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import org.acme.service.OwnersService;
-import org.acme.model.Pets;
 import org.acme.model.PetForm;
 import org.acme.model.PetType;
 import org.acme.service.PetsService;
@@ -51,8 +51,8 @@ public class PetsResource {
     @Path("addPet")
     public Response addPet(@MultipartForm PetForm petForm, @QueryParam("ownerId") Long ownerId) {
 
-        Pets newPet = petForm.addPet();
-        newPet.setOwners(ownerService.findById(ownerId));
+        Pet newPet = petForm.addPet();
+        newPet.setOwner(ownerService.findById(ownerId));
         newPet.setPetType(PetType.findByName(petForm.type));
         newPet.persist();
         return Response.status(301)
@@ -66,9 +66,9 @@ public class PetsResource {
     @Path("editPet")
     public Response editOwner(@MultipartForm PetForm petForm, @QueryParam("ownerId") Long ownerId, @QueryParam("petId")Long petId) {
 
-        Pets existingPet = petService.findById(petId);
+        Pet existingPet = petService.findById(petId);
         existingPet = petForm.editPet(existingPet);
-        existingPet.setOwners(ownerService.findById(ownerId));
+        existingPet.setOwner(ownerService.findById(ownerId));
         existingPet.setPetType(PetType.findByName(petForm.type));
         return Response.status(301)
             .location(URI.create("/owners?id=" + ownerId))

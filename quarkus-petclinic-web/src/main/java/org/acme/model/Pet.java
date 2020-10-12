@@ -14,13 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Transient;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 @Cacheable
-public class Pets extends PanacheEntityBase {
+public class Pet extends PanacheEntityBase {
   
 	@Id
     @SequenceGenerator(
@@ -50,18 +49,18 @@ public class Pets extends PanacheEntityBase {
 
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
-	public Owners owners;
+	public Owner owner;
 
-	public Owners getOwners() {
-		return this.owners;
+	public Owner getOwner() {
+		return this.owner;
 	}
 
-	public void setOwners(Owners owners) {
-		this.owners = owners;
+	public void setOwner(Owner owner) {
+		this.owner = owner;
 	}
 
-	@Transient
-	public List<Visits> visits;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pets")
+	public List<Visit> visits;
 	
 	public Long getId(){
         return id;

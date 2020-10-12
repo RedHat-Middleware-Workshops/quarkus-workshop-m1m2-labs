@@ -3,24 +3,24 @@
 <table class="table table-striped">
     <tr>
       <th>Name</th>
-      <td><b>{owners.get(0).firstName} {owners.get(0).lastName}</b></td>
+      <td><b>{owner.get(0).firstName} {owner.get(0).lastName}</b></td>
     </tr>
     <tr>
       <th>Address</th>
-      <td>{owners.get(0).address}</td>
+      <td>{owner.get(0).address}</td>
     </tr>
     <tr>
       <th>City</th>
-      <td>{owners.get(0).city}</td>
+      <td>{owner.get(0).city}</td>
     </tr>
     <tr>
       <th>Telephone</th>
-      <td>{owners.get(0).telephone}</td>
+      <td>{owner.get(0).telephone}</td>
     </tr>
 </table>
 
-<a href="getOwner?ownerId={owners.get(0).id}" class="btn btn-default">Edit Owner</a>
-<a href="getPet?ownerId={owners.get(0).id}" class="btn btn-default">Add New Pet</a>
+<a href="getOwner?ownerId={owner.get(0).id}" class="btn btn-default">Edit Owner</a>
+<a href="getPet?ownerId={owner.get(0).id}" class="btn btn-default">Add New Pet</a>
 
 <br />
 <br />
@@ -29,7 +29,7 @@
 <h2>Pets and Visits</h2>
 
 <table class="table table-striped">
-    {#for pet in owners.get(0).pets} 
+    {#for pet in owner.get(0).pet}
       <tr>
         <td valign="top">
           <dl class="dl-horizontal">
@@ -58,8 +58,8 @@
               {/for}
             {/if}
             <tr>
-              <td><a href="/getPet?ownerId={owners.get(0).id}&petId={pet.id}">Edit Pet</a></td>
-              <td><a href="/getVisit?ownerId={owners.get(0).id}&petId={pet.id}">Add Visit</a></td>
+              <td><a href="/getPet?ownerId={owner.get(0).id}&petId={pet.id}">Edit Pet</a></td>
+              <td><a href="/getVisit?ownerId={owner.get(0).id}&petId={pet.id}">Add Visit</a></td>
             </tr>
           </table>
         </td>
