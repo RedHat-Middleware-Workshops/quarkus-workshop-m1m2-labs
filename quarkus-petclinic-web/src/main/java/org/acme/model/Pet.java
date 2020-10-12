@@ -61,8 +61,8 @@ public class Pet extends PanacheEntityBase {
 	}
 
 	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
-	// @Transient
-	// public List<Visit> visits;
+	@Transient
+	public List<Visit> visits;
 	
 	public Long getId(){
         return id;
