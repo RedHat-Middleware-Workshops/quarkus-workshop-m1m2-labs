@@ -16,7 +16,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 @Cacheable
-public class Visits extends PanacheEntityBase {
+public class Visit extends PanacheEntityBase {
   
 	@Id
     @SequenceGenerator(
@@ -36,11 +36,11 @@ public class Visits extends PanacheEntityBase {
 	@NotEmpty
 	public String description;
 
-	public static List<Visits> findByPetId(long petId) {
+	public static List<Visit> findByPetId(long petId) {
 		return list("petId", petId);
 	}
 
-	public static List<Visits> findByMultiPetIds(List<Long> petIds) {
+	public static List<Visit> findByMultiPetIds(List<Long> petIds) {
 		return list("petId in (?1)", petIds);
 	}
 

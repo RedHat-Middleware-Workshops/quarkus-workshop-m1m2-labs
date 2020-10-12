@@ -8,7 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.acme.model.Visits;
+import org.acme.model.Visit;
 
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
@@ -16,22 +16,22 @@ import org.acme.model.Visits;
 public class VisitsService {
    
 
-    public List<Visits> findByPetId(Long id) {
-        return Visits.findByPetId(id.longValue());
+    public List<Visit> findByPetId(Long id) {
+        return Visit.findByPetId(id.longValue());
     }
 
-	public List<Visits> getAllVisits() {
-		return Visits.listAll();
+	public List<Visit> getAllVisits() {
+		return Visit.listAll();
 	}
 
-	public List<Visits> findByMultiPetIds(List<Long> petIds) {
-		return Visits.findByMultiPetIds(petIds);
+	public List<Visit> findByMultiPetIds(List<Long> petIds) {
+		return Visit.findByMultiPetIds(petIds);
 	}
 
     @Transactional
-	public void save(Visits theVisits) {
+	public void save(Visit theVisit) {
 
-        theVisits.persist();
+        theVisit.persist();
 	}
 
 }
