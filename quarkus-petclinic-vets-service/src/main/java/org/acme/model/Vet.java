@@ -12,9 +12,9 @@ import javax.validation.constraints.NotEmpty;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Entity
+@Entity(name="vets")
 @Cacheable
-public class Vets extends PanacheEntity {
+public class Vet extends PanacheEntity {
 
 	@Column(name = "first_name")
 	@NotEmpty
@@ -27,8 +27,8 @@ public class Vets extends PanacheEntity {
 	@ManyToMany
 	@JoinTable(
 		name = "vet_Specialties",
-		joinColumns = @JoinColumn(name = "vet_id"), 
+		joinColumns = @JoinColumn(name = "vet_id"),
   		inverseJoinColumns = @JoinColumn(name = "specialty_id"))
-    public List<Specialties> specialties;
+    public List<Specialty> specialties;
 	
 }

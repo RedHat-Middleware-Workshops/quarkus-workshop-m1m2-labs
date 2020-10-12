@@ -3,12 +3,13 @@ package org.acme.model;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Entity(name = "vet_specialties")
+@Entity(name="vet_specialties")
 @Cacheable
-public class VetSpecialties extends PanacheEntity {
+public class VetSpecialty extends PanacheEntity {
 
     @Column(name = "vet_id")
     public Long vetId;
