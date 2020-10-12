@@ -31,6 +31,7 @@ public class VisitsService {
     @Transactional
 	public void save(Visit theVisit) {
 
+    	System.out.println("saving: " + theVisit);
         theVisit.persist();
 	}
 

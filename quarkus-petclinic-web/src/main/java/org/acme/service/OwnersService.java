@@ -40,7 +40,7 @@ public class OwnersService {
 
     public Owner findById(Long id) {
         Owner theOwner = Owner.findById(id.longValue());
-        assignPetVisits(theOwner);
+        // assignPetVisits(theOwner);
 
         assignPetVisitsMulti(theOwner);
 
