@@ -40,7 +40,7 @@ public class OwnersService {
 
     public Owner findById(Long id) {
         Owner theOwner = Owner.findById(id.longValue());
-        // assignPetVisits(theOwner);
+        assignPetVisits(theOwner);
 
         assignPetVisitsMulti(theOwner);
 
@@ -50,12 +50,10 @@ public class OwnersService {
     private void assignPetVisits(Owner theOwner) {
         List<Pet> pets = theOwner.pets;
 
-        /*
         for (Pet tempPet : pets) {
             List<Visit> visits = visitsRestClient.visits(tempPet.id);
             tempPet.visits = visits;
         }
-        */
     }
 
     private void assignPetVisitsMulti(Owner theOwner) {
@@ -69,7 +67,6 @@ public class OwnersService {
         List<Long> petIds = new ArrayList<>(thePetsMap.keySet());
         List<Visit> visitsCollection = visitsRestClient.visitsMultiGet(petIds);
 
-        /*
         visitsCollection.forEach(tempVisit -> {
             long petId = tempVisit.petId;
 
@@ -81,7 +78,6 @@ public class OwnersService {
 
             thePet.visits.add(tempVisit);
         });
-        */
 
         /*
         for (Visits tempVisit : visitsCollection) {
