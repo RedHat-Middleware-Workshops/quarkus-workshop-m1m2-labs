@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-@Entity
+@Entity(name="visits")
 @Cacheable
 public class Visit extends PanacheEntityBase {
   
