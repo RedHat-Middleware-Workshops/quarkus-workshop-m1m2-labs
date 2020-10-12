@@ -3,11 +3,10 @@ package org.acme.model;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Entity(name="vet_specialties")
+@Entity(name = "vet_specialties")
 @Cacheable
 public class VetSpecialty extends PanacheEntity {
 

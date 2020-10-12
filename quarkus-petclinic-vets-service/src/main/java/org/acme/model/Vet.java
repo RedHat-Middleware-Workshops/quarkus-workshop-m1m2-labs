@@ -27,7 +27,7 @@ public class Vet extends PanacheEntity {
 	@ManyToMany
 	@JoinTable(
 		name = "vet_Specialties",
-		joinColumns = @JoinColumn(name = "vet_id"),
+		joinColumns = @JoinColumn(name = "vet_id"), 
   		inverseJoinColumns = @JoinColumn(name = "specialty_id"))
     public List<Specialty> specialties;
 	

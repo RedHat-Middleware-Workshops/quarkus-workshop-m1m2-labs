@@ -1,6 +1,6 @@
 {#include header/}
 
-{#if owner == NULL || owner.size == 0}
+{#if owners == NULL || owners.size == 0}
 
     <h2>Find Owners</h2>
 
@@ -9,7 +9,7 @@
         <div class="control-group" id="lastNameGroup">
         <label class="col-sm-2 control-label">Last name </label>
         <div class="col-sm-10">
-            {#if owner.size == 0}
+            {#if owners.size == 0}
                 <input class="form-control" name="lastName" id="lastName" value="{lastName}" size="30" maxlength="80"/>
                 <span class="help-inline"><div><p>has not been found</p></div></span>
             {#else}
@@ -27,7 +27,7 @@
     <br />
     <a href="getOwner" class="btn btn-default" >Add Owner</a>
 
-{#else if owner.size > 1}
+{#else if owners.size > 1}
     {#include ownersList/}
 {#else}
     {#include ownerDetails/}
