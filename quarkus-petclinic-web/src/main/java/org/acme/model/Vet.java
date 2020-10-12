@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Entity
+@Entity(name="vets")
 @Cacheable
 public class Vet extends PanacheEntity {
 

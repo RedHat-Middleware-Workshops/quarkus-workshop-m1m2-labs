@@ -17,7 +17,7 @@ import javax.persistence.SequenceGenerator;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-@Entity
+@Entity(name="pets")
 @Cacheable
 public class Pet extends PanacheEntityBase {
   
@@ -59,7 +59,7 @@ public class Pet extends PanacheEntityBase {
 		this.owner = owner;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pets")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
 	public List<Visit> visits;
 	
 	public Long getId(){
