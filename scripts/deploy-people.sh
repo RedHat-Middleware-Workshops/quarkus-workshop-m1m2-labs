@@ -17,9 +17,10 @@ oc delete dc,deployment,bc,build,svc,route,pod,is --all
 echo "Waiting 30 seconds to finialize deletion of resources..."
 sleep 30
 
-mvn clean package -Pnative -DskipTests -f ${CHE_PROJECTS_ROOT}/quarkus-workshop-labs
+mvn -q quarkus:add-extension -Dextensions="openshift" -f $CHE_PROJECTS_ROOT/quarkus-workshop-labs
 
-oc new-build quay.io/quarkus/ubi-quarkus-native-binary-s2i:19.3.1 --binary --name=people -l app=people
-oc start-build people --from-file $CHE_PROJECTS_ROOT/quarkus-workshop-labs/target/*-runner --follow
-oc new-app people --as-deployment-config -l "app.openshift.io/runtime=quarkus,app.kubernetes.io/part-of=people" && oc expose svc/people
+cp /projects/quarkus-workshop-labs/scripts/application.properties /projects/quarkus-workshop-labs/src/main/resources/
+
+mvn clean package -Pnative -DskipTests -Dquarkus.package.uber-jar=false -f ${CHE_PROJECTS_ROOT}/quarkus-workshop-labs
+
 oc rollout status -w dc/people
