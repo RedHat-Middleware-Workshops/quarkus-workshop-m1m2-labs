@@ -21,5 +21,6 @@ scrape_configs:
 
   # Scrape configuration for our people app
   - job_name: 'quarkus-people-app'
+    metrics_path: '/q/metrics'
     static_configs:
     - targets: ['people:8080']

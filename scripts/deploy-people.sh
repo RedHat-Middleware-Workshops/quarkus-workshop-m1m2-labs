@@ -21,6 +21,6 @@ mvn -q quarkus:add-extension -Dextensions="openshift" -f $CHE_PROJECTS_ROOT/quar
 
 cp /projects/quarkus-workshop-m1m2-labs/scripts/application.properties /projects/quarkus-workshop-m1m2-labs/src/main/resources/
 
-mvn clean package -Pnative -DskipTests -Dquarkus.package.uber-jar=false -f ${CHE_PROJECTS_ROOT}/quarkus-workshop-m1m2-labs
+mvn clean package -Pnative -DskipTests -f ${CHE_PROJECTS_ROOT}/quarkus-workshop-m1m2-labs
 
 oc rollout status -w dc/people
