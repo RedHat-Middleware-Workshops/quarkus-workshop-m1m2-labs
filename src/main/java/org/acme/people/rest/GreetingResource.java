@@ -8,6 +8,8 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.smallrye.common.annotation.NonBlocking;
+
 @Path("/hello")
 public class GreetingResource {
 
@@ -15,6 +17,7 @@ public class GreetingResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @NonBlocking
     public String hello() {
         return "hello";
     }
