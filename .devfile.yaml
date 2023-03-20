@@ -40,17 +40,17 @@ commands:
     exec:
       component: quarkus-tools
       commandLine: 'mvn verify -f ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs'
-  - id: 02-start-livecoding
+  - id: 02-live-coding
     exec:
       component: quarkus-tools
       commandLine: >-
         mvn clean quarkus:dev -Dquarkus.http.host=0.0.0.0 -f
         ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs
-  - id: 03-package-app-for-openshift
+  - id: 03-package-app
     exec:
       component: quarkus-tools
       commandLine: 'mvn package -DskipTests -f ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs'
-  - id: 04-build-native-app
+  - id: 04-build-native
     exec:
       component: quarkus-tools
       commandLine: >-
