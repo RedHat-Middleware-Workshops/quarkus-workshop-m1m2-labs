@@ -1,15 +1,11 @@
 schemaVersion: 2.2.0
 metadata:
-  name: user-workspace
+  name: quarkus-workshop
 components:
   - container:
-      cpuLimit: 1000m
+      cpuLimit: 2000m
       cpuRequest: 500m
       endpoints:
-        - exposure: public
-          name: index-webpage
-          protocol: http
-          targetPort: 8080
         - exposure: public
           name: quarkus-devui
           path: /q/dev
@@ -19,12 +15,14 @@ components:
           name: quarkus-debug
           protocol: tcp
           targetPort: 5005
+        - exposure: none
+          name: test-endpoint
+          protocol: tcp
+          targetPort: 8081
       env:
         - value: /home/jboss/.m2
           name: MAVEN_CONFIG
-        - value: >-
-            -Xmx4G -Xss128M -XX:MetaspaceSize=1G -XX:MaxMetaspaceSize=2G
-            -XX:+CMSClassUnloadingEnabled
+        - value: -Xmx4G -Xss128M -XX:MetaspaceSize=1G -XX:MaxMetaspaceSize=2G
           name: MAVEN_OPTS
       image: >-
         image-registry.openshift-image-registry.svc:5000/openshift/quarkus-stack:3.0
@@ -38,21 +36,29 @@ components:
 commands:
   - id: 01-run-tests
     exec:
+      label: 01. Run Tests
       component: quarkus-tools
-      commandLine: 'mvn verify -f ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs'
+      commandLine: mvn verify
   - id: 02-live-coding
     exec:
+      label: 02. Start Live Coding
       component: quarkus-tools
-      commandLine: >-
-        mvn clean quarkus:dev -Dquarkus.http.host=0.0.0.0 -f
-        ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs
+      commandLine: mvn clean quarkus:dev -Dquarkus.http.host=0.0.0.0
   - id: 03-package-app
     exec:
+      label: 3. Package App for OpenShift
       component: quarkus-tools
-      commandLine: 'mvn package -DskipTests -f ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs'
+      commandLine: mvn package -DskipTests
   - id: 04-build-native
     exec:
+      label: 4. Build Native App
       component: quarkus-tools
-      commandLine: >-
-        mvn package -Pnative -DskipTests -f
-        ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs
+      commandLine: mvn package -Pnative -DskipTests
+  - id: package-pre-start
+    exec:
+      label: Pre-start Package
+      component: quarkus-tools
+      commandLine: nohup mvn package -DskipTests &
+events:
+  postStart:
+    - package-pre-start
