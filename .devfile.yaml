@@ -36,21 +36,21 @@ components:
         - /dev/null
     name: quarkus-tools
 commands:
-  - id: 01-Run-Tests
+  - id: 01-run-tests
     exec:
       component: quarkus-tools
       commandLine: 'mvn verify -f ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs'
-  - id: 02-Start-LiveCoding
+  - id: 02-start-livecoding
     exec:
       component: quarkus-tools
       commandLine: >-
         mvn clean quarkus:dev -Dquarkus.http.host=0.0.0.0 -f
         ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs
-  - id: 03-Package-App-for-OpenShift
+  - id: 03-package-app-for-openShift
     exec:
       component: quarkus-tools
       commandLine: 'mvn package -DskipTests -f ${PROJECT_SOURCE}/quarkus-workshop-m1m2-labs'
-  - id: 04-Build-Native-App
+  - id: 04-build-native-app
     exec:
       component: quarkus-tools
       commandLine: >-
