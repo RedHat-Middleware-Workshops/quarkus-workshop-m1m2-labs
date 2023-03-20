@@ -1,6 +1,8 @@
 schemaVersion: 2.2.0
 metadata:
   name: quarkus-workshop
+attributes:
+  controller.devfile.io/storage-type: ephemeral
 components:
   - container:
       cpuLimit: 2000m
@@ -54,11 +56,3 @@ commands:
       label: 4. Build Native App
       component: quarkus-tools
       commandLine: mvn package -Pnative -DskipTests
-  - id: package-pre-start
-    exec:
-      label: Pre-start Package
-      component: quarkus-tools
-      commandLine: nohup mvn package -DskipTests &
-events:
-  postStart:
-    - package-pre-start
