@@ -17,9 +17,6 @@ deployments/
 *.iml
 *.ipr
 
-### MS VISUAL CODE ##
-.vscode/
-
 ### NetBeans ###
 nbproject/private/
 build/
