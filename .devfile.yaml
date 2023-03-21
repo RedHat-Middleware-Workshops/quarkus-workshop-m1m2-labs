@@ -26,14 +26,9 @@ components:
           name: MAVEN_CONFIG
         - value: -Xmx4G -Xss128M -XX:MetaspaceSize=1G -XX:MaxMetaspaceSize=2G
           name: MAVEN_OPTS
-      image: >-
-        image-registry.openshift-image-registry.svc:5000/openshift/quarkus-stack:3.0
+      image: quay.io/openshiftlabs/quarkus-workshop-stack:3.0
       memoryLimit: 6Gi
       memoryRequest: 4Gi
-      command:
-        - tail
-        - '-f'
-        - /dev/null
     name: quarkus-tools
 commands:
   - id: 01-run-tests
@@ -48,11 +43,11 @@ commands:
       commandLine: mvn clean quarkus:dev -Dquarkus.http.host=0.0.0.0
   - id: 03-package-app
     exec:
-      label: 3. Package App for OpenShift
+      label: 03. Package App for OpenShift
       component: quarkus-tools
       commandLine: mvn package -DskipTests
   - id: 04-build-native
     exec:
-      label: 4. Build Native App
+      label: 04. Build Native App
       component: quarkus-tools
       commandLine: mvn package -Pnative -DskipTests
