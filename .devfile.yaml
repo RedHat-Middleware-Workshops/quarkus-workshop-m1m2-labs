@@ -9,6 +9,10 @@ components:
       cpuRequest: 500m
       endpoints:
         - exposure: public
+          name: index-webpage
+          protocol: http
+          targetPort: 8080
+        - exposure: public
           name: quarkus-devui
           path: /q/dev
           protocol: http
