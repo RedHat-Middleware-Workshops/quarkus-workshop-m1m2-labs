@@ -30,7 +30,7 @@ components:
           name: MAVEN_CONFIG
         - value: -Xmx4G -Xss128M -XX:MetaspaceSize=1G -XX:MaxMetaspaceSize=2G
           name: MAVEN_OPTS
-      image: image-registry.openshift-image-registry.svc:5000/openshift/quarkus-stack:3.0
+      image: image-registry.openshift-image-registry.svc:5000/openshift/quarkus-stack:3.4
       memoryLimit: 6Gi
       memoryRequest: 4Gi
     name: quarkus-tools
