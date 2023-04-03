@@ -55,13 +55,14 @@ commands:
       label: 04. Build Native App
       component: quarkus-tools
       commandLine: mvn package -Pnative -DskipTests
-  - id: 05-run-native
+  - id: 05-run-fast-jar
     exec:
-      label: 05. Run Native App
-      component: quarkus-tools
-      commandLine: ./target/people-1.0-SNAPSHOT-runner
-  - id: 06-run-fast-jar
-    exec:
-      label: 06. Run Fast Jar
+      label: 05. Run Fast Jar
       component: quarkus-tools
       commandLine: java -jar target/quarkus-app/quarkus-run.jar
+  - id: 06-run-native
+    exec:
+      label: 06. Run Native App
+      component: quarkus-tools
+      commandLine: ./target/people-1.0-SNAPSHOT-runner
+
