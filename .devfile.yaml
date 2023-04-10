@@ -59,7 +59,7 @@ commands:
     exec:
       label: 05. Run Fast Jar
       component: quarkus-tools
-      commandLine: java -jar target/quarkus-app/quarkus-run.jar -Dquarkus.http.port=8081
+      commandLine: java -Dquarkus.http.port=8081 -jar target/quarkus-app/quarkus-run.jar
   - id: 06-run-native
     exec:
       label: 06. Run Native App
