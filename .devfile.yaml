@@ -25,6 +25,10 @@ components:
           name: test-endpoint
           protocol: tcp
           targetPort: 8081
+        - exposure: none
+          name: kubedock
+          protocol: tcp
+          targetPort: 2475
       env:
         - value: /home/jboss/.m2
           name: MAVEN_CONFIG
