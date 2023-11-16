@@ -19,8 +19,8 @@ sleep 30
 
 mvn -q quarkus:add-extension -Dextensions="openshift"
 
-cp /projects/quarkus-workshop-m1m2-labs/scripts/application.properties /projects/quarkus-workshop-m1m2-labs/src/main/resources/
+cp $PROJECT_SOURCE/scripts/application.properties $PROJECT_SOURCE/src/main/resources/
+
+sed -i "s/USERXX/${USERXX}/g" $PROJECT_SOURCE/src/main/resources/application.properties
 
 mvn clean package -Pnative -DskipTests
-
-oc rollout status -w dc/people
