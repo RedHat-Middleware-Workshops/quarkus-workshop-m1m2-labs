@@ -42,8 +42,7 @@ components:
           value: 'true'
         - name: TESTCONTAINERS_CHECKS_DISABLE
           value: 'true'
-      # image: quay.io/openshiftlabs/quarkus-workshop-stack:3.9
-      image: quay.io/openshiftlabs/cloudnative-workspaces-quarkus:3.9
+      image: quay.io/openshiftlabs/quarkus-workshop-stack:3.9
       memoryLimit: 6Gi
       memoryRequest: 4Gi
     name: quarkus-tools
